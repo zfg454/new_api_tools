@@ -206,147 +206,135 @@ export const THEMES: ThemeConfig[] = [
   { id: 'tesla', name: 'Tesla', nameEn: 'Tesla', icon: Rocket, description: '工业未来风，极简黑红配色' },
 ]
 
-// Theme-specific styles
+// Theme-specific styles (保持原有所有主题样式不变，只添加手机端响应式padding调整)
 const themeStyles: Record<ThemeId, {
-  // Container
   container: string
   background?: string
-  // Header
   headerTitle: string
   headerSubtitle: string
   countdownBox: string
   countdownText: string
   countdownLabel: string
-  // Card
   card: string
   cardHover: string
   modelName: string
   statsText: string
   statsValue: string
-  // Status colors
   statusGreen: string
   statusYellow: string
   statusRed: string
-  statusEmpty: string  // No requests - neutral color
+  statusEmpty: string
   statusHover: string
-  // Badge
   badgeGreen: string
   badgeYellow: string
   badgeRed: string
-  // Timeline
   timeLabel: string
-  // Tooltip
   tooltip: string
   tooltipTitle: string
   tooltipLabel: string
   tooltipValue: string
-  // Legend
   legendText: string
   legendDot: string
-  // Empty state
   emptyText: string
-  // Loader
   loader: string
 }> = {
   // ========== OBSIDIAN (Default Dark Theme) ==========
   obsidian: {
-    container: 'min-h-screen bg-[#0d1117] text-gray-100 p-6',
-    headerTitle: 'text-2xl font-bold text-white tracking-tight',
-    headerSubtitle: 'text-sm text-gray-500 mt-1.5',
-    countdownBox: 'flex items-center gap-2 px-4 py-2.5 text-sm bg-[#161b22] border border-gray-800 rounded-xl',
+    container: 'min-h-screen bg-[#0d1117] text-gray-100 p-4 sm:p-6',
+    headerTitle: 'text-xl sm:text-2xl font-bold text-white tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-gray-500 mt-1.5',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-2 text-sm bg-[#161b22] border border-gray-800 rounded-xl',
     countdownText: 'text-blue-400 font-mono font-semibold',
     countdownLabel: 'text-gray-500',
-    card: 'bg-[#161b22] border border-gray-800/80 rounded-xl p-5 transition-all duration-300',
+    card: 'bg-[#161b22] border border-gray-800/80 rounded-xl p-4 sm:p-5 transition-all duration-300',
     cardHover: 'hover:border-gray-700 hover:bg-[#1c2129]',
-    modelName: 'font-semibold text-white truncate max-w-md',
-    statsText: 'text-sm text-gray-400',
+    modelName: 'font-semibold text-white break-words whitespace-normal text-sm sm:text-base leading-tight',
+    statsText: 'text-xs sm:text-sm text-gray-400',
     statsValue: 'text-white font-semibold',
     statusGreen: 'bg-emerald-500',
     statusYellow: 'bg-amber-500',
     statusRed: 'bg-rose-500',
-    statusEmpty: 'bg-gray-700',  // No requests
+    statusEmpty: 'bg-gray-700',
     statusHover: 'hover:ring-2 hover:ring-white/30 hover:scale-y-110 origin-bottom',
     badgeGreen: 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30',
     badgeYellow: 'bg-amber-500/15 text-amber-400 border border-amber-500/30',
     badgeRed: 'bg-rose-500/15 text-rose-400 border border-rose-500/30',
-    timeLabel: 'text-xs text-gray-600 font-mono',
+    timeLabel: 'text-[10px] sm:text-xs text-gray-600 font-mono',
     tooltip: 'bg-[#1c2128] border border-gray-700 rounded-xl shadow-2xl p-4 z-[9999]',
     tooltipTitle: 'font-semibold text-white mb-3 pb-2 border-b border-gray-700/50',
     tooltipLabel: 'text-gray-400',
     tooltipValue: 'text-white font-medium',
-    legendText: 'text-xs text-gray-500',
-    legendDot: 'w-3 h-3 rounded',
+    legendText: 'text-[10px] sm:text-xs text-gray-500',
+    legendDot: 'w-2 sm:w-3 h-2 sm:h-3 rounded',
     emptyText: 'text-gray-500',
     loader: 'text-gray-500',
   },
-
-  // ========== DAYLIGHT (Light Theme) ==========
+  // ... 其他主题的样式需要类似修改，但为了代码简洁，这里只展示 obsidian 的修改示例
+  // 实际使用时你需要将所有主题的 container 改为 'p-4 sm:p-6'，headerTitle 改为 'text-xl sm:text-2xl' 等
+  // 由于篇幅限制，这里省略其他主题的详细修改，你可以在实际文件中按相同模式修改
   daylight: {
-    container: 'min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-slate-900 p-6',
-    headerTitle: 'text-2xl font-bold text-slate-800 tracking-tight',
-    headerSubtitle: 'text-sm text-slate-500 mt-1.5',
-    countdownBox: 'flex items-center gap-2 px-4 py-2.5 text-sm bg-white border border-slate-200 rounded-xl shadow-sm',
+    container: 'min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-slate-900 p-4 sm:p-6',
+    headerTitle: 'text-xl sm:text-2xl font-bold text-slate-800 tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-slate-500 mt-1.5',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-2 text-sm bg-white border border-slate-200 rounded-xl shadow-sm',
     countdownText: 'text-blue-600 font-mono font-semibold',
     countdownLabel: 'text-slate-400',
-    card: 'bg-white border border-slate-200 rounded-xl p-5 shadow-sm transition-all duration-300',
+    card: 'bg-white border border-slate-200 rounded-xl p-4 sm:p-5 shadow-sm transition-all duration-300',
     cardHover: 'hover:shadow-md hover:border-slate-300',
-    modelName: 'font-semibold text-slate-800 truncate max-w-md',
-    statsText: 'text-sm text-slate-500',
+    modelName: 'font-semibold text-slate-800 break-words whitespace-normal text-sm sm:text-base leading-tight',
+    statsText: 'text-xs sm:text-sm text-slate-500',
     statsValue: 'text-slate-800 font-semibold',
     statusGreen: 'bg-emerald-500',
     statusYellow: 'bg-amber-500',
     statusRed: 'bg-rose-500',
-    statusEmpty: 'bg-slate-300',  // No requests
+    statusEmpty: 'bg-slate-300',
     statusHover: 'hover:ring-2 hover:ring-slate-400/50 hover:scale-y-110 origin-bottom',
     badgeGreen: 'bg-emerald-100 text-emerald-700 border border-emerald-200',
     badgeYellow: 'bg-amber-100 text-amber-700 border border-amber-200',
     badgeRed: 'bg-rose-100 text-rose-700 border border-rose-200',
-    timeLabel: 'text-xs text-slate-400 font-mono',
+    timeLabel: 'text-[10px] sm:text-xs text-slate-400 font-mono',
     tooltip: 'bg-white border border-slate-200 rounded-xl shadow-xl p-4 z-[9999]',
     tooltipTitle: 'font-semibold text-slate-800 mb-3 pb-2 border-b border-slate-100',
     tooltipLabel: 'text-slate-500',
     tooltipValue: 'text-slate-800 font-medium',
-    legendText: 'text-xs text-slate-500',
-    legendDot: 'w-3 h-3 rounded shadow-sm',
+    legendText: 'text-[10px] sm:text-xs text-slate-500',
+    legendDot: 'w-2 sm:w-3 h-2 sm:h-3 rounded shadow-sm',
     emptyText: 'text-slate-400',
     loader: 'text-slate-400',
   },
-
-  // ========== MINIMAL (Ultra Simple Theme) ==========
   minimal: {
-    container: 'min-h-screen bg-white text-gray-900 p-4',
-    headerTitle: 'text-lg font-medium text-gray-900',
-    headerSubtitle: 'text-xs text-gray-400 mt-0.5',
+    container: 'min-h-screen bg-white text-gray-900 p-3 sm:p-4',
+    headerTitle: 'text-base sm:text-lg font-medium text-gray-900',
+    headerSubtitle: 'text-[10px] sm:text-xs text-gray-400 mt-0.5',
     countdownBox: 'flex items-center gap-1.5 px-2 py-1 text-xs text-gray-400',
     countdownText: 'text-gray-600 font-mono',
     countdownLabel: 'text-gray-400',
-    card: 'border-b border-gray-100 py-3 transition-colors',
+    card: 'border-b border-gray-100 py-2 sm:py-3 transition-colors',
     cardHover: 'hover:bg-gray-50',
-    modelName: 'font-medium text-gray-800 truncate max-w-md text-sm',
-    statsText: 'text-xs text-gray-400',
+    modelName: 'font-medium text-gray-800 break-words whitespace-normal text-xs sm:text-sm leading-tight',
+    statsText: 'text-[10px] sm:text-xs text-gray-400',
     statsValue: 'text-gray-700 font-medium',
     statusGreen: 'bg-gray-900',
     statusYellow: 'bg-gray-400',
     statusRed: 'bg-gray-200',
-    statusEmpty: 'bg-gray-100',  // No requests
+    statusEmpty: 'bg-gray-100',
     statusHover: 'hover:opacity-70',
-    badgeGreen: 'text-[10px] text-gray-500 font-normal',
-    badgeYellow: 'text-[10px] text-gray-400 font-normal',
-    badgeRed: 'text-[10px] text-gray-300 font-normal',
-    timeLabel: 'text-[10px] text-gray-300',
+    badgeGreen: 'text-[8px] sm:text-[10px] text-gray-500 font-normal',
+    badgeYellow: 'text-[8px] sm:text-[10px] text-gray-400 font-normal',
+    badgeRed: 'text-[8px] sm:text-[10px] text-gray-300 font-normal',
+    timeLabel: 'text-[8px] sm:text-[10px] text-gray-300',
     tooltip: 'bg-gray-900 text-white rounded-lg shadow-lg p-3 z-[9999]',
     tooltipTitle: 'font-medium text-white text-xs mb-2',
     tooltipLabel: 'text-gray-400 text-xs',
     tooltipValue: 'text-white text-xs',
-    legendText: 'text-[10px] text-gray-400',
-    legendDot: 'w-2 h-2 rounded-sm',
+    legendText: 'text-[8px] sm:text-[10px] text-gray-400',
+    legendDot: 'w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-sm',
     emptyText: 'text-gray-300 text-sm',
     loader: 'text-gray-300',
   },
-
-  // ========== NEON (Cyberpunk Theme) ==========
+  // 为了代码完整，其他主题的样式也加上响应式，这里先保留原有定义（实际使用时可以批量替换）
   neon: {
-    container: 'min-h-screen bg-black text-white p-6 relative',
+    container: 'min-h-screen bg-black text-white p-4 sm:p-6 relative',
     background: `
       background:
         radial-gradient(ellipse at 20% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
@@ -354,47 +342,45 @@ const themeStyles: Record<ThemeId, {
         radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 70%),
         linear-gradient(180deg, #0a0a0a 0%, #000 100%);
     `,
-    headerTitle: 'text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 tracking-tight uppercase',
-    headerSubtitle: 'text-sm text-gray-500 mt-1.5 font-mono',
-    countdownBox: 'flex items-center gap-2 px-4 py-2.5 text-sm bg-black/50 border border-cyan-500/50 rounded-lg shadow-[0_0_15px_rgba(34,211,238,0.3)]',
+    headerTitle: 'text-xl sm:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 tracking-tight uppercase',
+    headerSubtitle: 'text-xs sm:text-sm text-gray-500 mt-1.5 font-mono',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-2 text-sm bg-black/50 border border-cyan-500/50 rounded-lg shadow-[0_0_15px_rgba(34,211,238,0.3)]',
     countdownText: 'text-cyan-400 font-mono font-bold animate-pulse',
     countdownLabel: 'text-gray-500 font-mono',
-    card: 'bg-black/40 border border-purple-500/30 rounded-lg p-5 transition-all duration-300 relative overflow-hidden',
+    card: 'bg-black/40 border border-purple-500/30 rounded-lg p-4 sm:p-5 transition-all duration-300 relative overflow-hidden',
     cardHover: 'hover:border-pink-500/50 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)]',
-    modelName: 'font-bold text-white truncate max-w-md tracking-wide',
-    statsText: 'text-sm text-gray-500 font-mono',
+    modelName: 'font-bold text-white break-words whitespace-normal text-sm sm:text-base tracking-wide leading-tight',
+    statsText: 'text-xs sm:text-sm text-gray-500 font-mono',
     statsValue: 'text-cyan-400 font-bold font-mono',
     statusGreen: 'bg-gradient-to-t from-emerald-600 to-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.5)]',
     statusYellow: 'bg-gradient-to-t from-yellow-600 to-yellow-400 shadow-[0_0_10px_rgba(234,179,8,0.5)]',
     statusRed: 'bg-gradient-to-t from-pink-600 to-pink-400 shadow-[0_0_10px_rgba(236,72,153,0.5)]',
-    statusEmpty: 'bg-gray-800',  // No requests
+    statusEmpty: 'bg-gray-800',
     statusHover: 'hover:shadow-[0_0_20px_currentColor] hover:scale-y-150 origin-bottom',
     badgeGreen: 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/50 shadow-[0_0_10px_rgba(16,185,129,0.3)]',
     badgeYellow: 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/50 shadow-[0_0_10px_rgba(234,179,8,0.3)]',
     badgeRed: 'bg-pink-500/20 text-pink-400 border border-pink-500/50 shadow-[0_0_10px_rgba(236,72,153,0.3)]',
-    timeLabel: 'text-xs text-gray-600 font-mono uppercase tracking-wider',
+    timeLabel: 'text-[10px] sm:text-xs text-gray-600 font-mono uppercase tracking-wider',
     tooltip: 'bg-black/90 border border-purple-500/50 rounded-lg shadow-[0_0_30px_rgba(168,85,247,0.3)] p-4 backdrop-blur z-[9999]',
     tooltipTitle: 'font-bold text-cyan-400 mb-3 pb-2 border-b border-purple-500/30 font-mono',
     tooltipLabel: 'text-gray-500 font-mono text-xs uppercase',
     tooltipValue: 'text-white font-mono',
-    legendText: 'text-xs text-gray-600 font-mono uppercase tracking-wider',
-    legendDot: 'w-3 h-3 rounded shadow-[0_0_8px_currentColor]',
+    legendText: 'text-[10px] sm:text-xs text-gray-600 font-mono uppercase tracking-wider',
+    legendDot: 'w-2 sm:w-3 h-2 sm:h-3 rounded shadow-[0_0_8px_currentColor]',
     emptyText: 'text-gray-600 font-mono',
     loader: 'text-purple-500',
   },
-
-  // ========== FOREST (Nature Theme) ==========
   forest: {
-    container: 'min-h-screen bg-[#022c22] text-emerald-50 p-6',
-    headerTitle: 'text-2xl font-bold text-emerald-100 tracking-tight',
-    headerSubtitle: 'text-sm text-emerald-400/60 mt-1.5',
-    countdownBox: 'flex items-center gap-2 px-4 py-2.5 text-sm bg-[#064e3b]/30 border border-[#065f46] rounded-xl',
+    container: 'min-h-screen bg-[#022c22] text-emerald-50 p-4 sm:p-6',
+    headerTitle: 'text-xl sm:text-2xl font-bold text-emerald-100 tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-emerald-400/60 mt-1.5',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-2 text-sm bg-[#064e3b]/30 border border-[#065f46] rounded-xl',
     countdownText: 'text-emerald-300 font-mono font-semibold',
     countdownLabel: 'text-emerald-400/60',
-    card: 'bg-[#064e3b]/20 border border-[#065f46]/50 rounded-xl p-5 transition-all duration-300',
+    card: 'bg-[#064e3b]/20 border border-[#065f46]/50 rounded-xl p-4 sm:p-5 transition-all duration-300',
     cardHover: 'hover:border-[#10b981]/30 hover:bg-[#064e3b]/30',
-    modelName: 'font-semibold text-emerald-50 truncate max-w-md',
-    statsText: 'text-sm text-emerald-400/60',
+    modelName: 'font-semibold text-emerald-50 break-words whitespace-normal text-sm sm:text-base leading-tight',
+    statsText: 'text-xs sm:text-sm text-emerald-400/60',
     statsValue: 'text-emerald-100 font-semibold',
     statusGreen: 'bg-emerald-500',
     statusYellow: 'bg-yellow-500',
@@ -404,29 +390,27 @@ const themeStyles: Record<ThemeId, {
     badgeGreen: 'bg-emerald-900/50 text-emerald-300 border border-emerald-700/50',
     badgeYellow: 'bg-yellow-900/50 text-yellow-300 border border-yellow-700/50',
     badgeRed: 'bg-red-900/50 text-red-300 border border-red-700/50',
-    timeLabel: 'text-xs text-emerald-400/40 font-mono',
+    timeLabel: 'text-[10px] sm:text-xs text-emerald-400/40 font-mono',
     tooltip: 'bg-[#022c22]/95 backdrop-blur-xl border border-[#065f46] rounded-xl shadow-[0_0_30px_rgba(6,95,70,0.6)] p-4 z-[9999]',
     tooltipTitle: 'font-semibold text-emerald-100 mb-3 pb-2 border-b border-[#065f46]',
     tooltipLabel: 'text-emerald-400/60',
     tooltipValue: 'text-emerald-100 font-medium',
-    legendText: 'text-xs text-emerald-400/60',
-    legendDot: 'w-3 h-3 rounded',
+    legendText: 'text-[10px] sm:text-xs text-emerald-400/60',
+    legendDot: 'w-2 sm:w-3 h-2 sm:h-3 rounded',
     emptyText: 'text-emerald-400/40',
     loader: 'text-emerald-500',
   },
-
-  // ========== OCEAN (Blue Theme) ==========
   ocean: {
-    container: 'min-h-screen bg-[#0b1121] text-blue-50 p-6',
-    headerTitle: 'text-2xl font-bold text-blue-100 tracking-tight',
-    headerSubtitle: 'text-sm text-blue-400/60 mt-1.5',
-    countdownBox: 'flex items-center gap-2 px-4 py-2.5 text-sm bg-blue-900/20 border border-blue-800/50 rounded-xl',
+    container: 'min-h-screen bg-[#0b1121] text-blue-50 p-4 sm:p-6',
+    headerTitle: 'text-xl sm:text-2xl font-bold text-blue-100 tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-blue-400/60 mt-1.5',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-2 text-sm bg-blue-900/20 border border-blue-800/50 rounded-xl',
     countdownText: 'text-cyan-300 font-mono font-semibold',
     countdownLabel: 'text-blue-400/60',
-    card: 'bg-blue-900/10 border border-blue-700/30 rounded-xl p-5 transition-all duration-300',
+    card: 'bg-blue-900/10 border border-blue-700/30 rounded-xl p-4 sm:p-5 transition-all duration-300',
     cardHover: 'hover:border-blue-500/30 hover:bg-blue-900/20',
-    modelName: 'font-semibold text-blue-50 truncate max-w-md',
-    statsText: 'text-sm text-blue-400/60',
+    modelName: 'font-semibold text-blue-50 break-words whitespace-normal text-sm sm:text-base leading-tight',
+    statsText: 'text-xs sm:text-sm text-blue-400/60',
     statsValue: 'text-blue-100 font-semibold',
     statusGreen: 'bg-cyan-500',
     statusYellow: 'bg-amber-500',
@@ -436,374 +420,350 @@ const themeStyles: Record<ThemeId, {
     badgeGreen: 'bg-cyan-900/30 text-cyan-300 border border-cyan-700/30',
     badgeYellow: 'bg-amber-900/30 text-amber-300 border border-amber-700/30',
     badgeRed: 'bg-rose-900/30 text-rose-300 border border-rose-700/30',
-    timeLabel: 'text-xs text-blue-400/40 font-mono',
+    timeLabel: 'text-[10px] sm:text-xs text-blue-400/40 font-mono',
     tooltip: 'bg-[#0b1121]/95 backdrop-blur-xl border border-blue-700/50 rounded-xl shadow-[0_0_30px_rgba(30,58,138,0.6)] p-4 z-[9999]',
     tooltipTitle: 'font-semibold text-blue-100 mb-3 pb-2 border-b border-blue-800/50',
     tooltipLabel: 'text-blue-400/60',
     tooltipValue: 'text-blue-100 font-medium',
-    legendText: 'text-xs text-blue-400/60',
-    legendDot: 'w-3 h-3 rounded',
+    legendText: 'text-[10px] sm:text-xs text-blue-400/60',
+    legendDot: 'w-2 sm:w-3 h-2 sm:h-3 rounded',
     emptyText: 'text-blue-400/40',
     loader: 'text-cyan-500',
   },
-
-  // ========== TERMINAL (Retro Theme) ==========
   terminal: {
-    container: 'min-h-screen bg-black text-green-500 p-6 font-mono',
-    headerTitle: 'text-2xl font-bold text-green-500 tracking-tight uppercase border-b-2 border-green-500/50 pb-2 inline-block',
-    headerSubtitle: 'text-sm text-green-500/60 mt-2',
-    countdownBox: 'flex items-center gap-2 px-4 py-2 text-sm bg-black border border-green-500/50 rounded-none',
+    container: 'min-h-screen bg-black text-green-500 p-4 sm:p-6 font-mono',
+    headerTitle: 'text-xl sm:text-2xl font-bold text-green-500 tracking-tight uppercase border-b-2 border-green-500/50 pb-2 inline-block',
+    headerSubtitle: 'text-xs sm:text-sm text-green-500/60 mt-2',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-2 text-sm bg-black border border-green-500/50 rounded-none',
     countdownText: 'text-green-400 font-bold',
     countdownLabel: 'text-green-500/60',
-    card: 'bg-black border border-green-900 p-5 transition-all duration-300 hover:border-green-500',
+    card: 'bg-black border border-green-900 p-4 sm:p-5 transition-all duration-300 hover:border-green-500',
     cardHover: 'hover:shadow-[0_0_10px_rgba(34,197,94,0.2)]',
-    modelName: 'font-bold text-green-500 truncate max-w-md',
-    statsText: 'text-sm text-green-500/60',
+    modelName: 'font-bold text-green-500 break-words whitespace-normal text-sm sm:text-base leading-tight',
+    statsText: 'text-xs sm:text-sm text-green-500/60',
     statsValue: 'text-green-500 font-bold',
     statusGreen: 'bg-green-600',
     statusYellow: 'bg-yellow-600',
     statusRed: 'bg-red-600',
     statusEmpty: 'bg-green-900/30',
     statusHover: 'hover:shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:scale-y-125 origin-bottom',
-    badgeGreen: 'bg-black text-green-500 border border-green-500 text-xs px-2 py-0.5',
-    badgeYellow: 'bg-black text-yellow-500 border border-yellow-500 text-xs px-2 py-0.5',
-    badgeRed: 'bg-black text-red-500 border border-red-500 text-xs px-2 py-0.5',
-    timeLabel: 'text-xs text-green-500/40',
+    badgeGreen: 'bg-black text-green-500 border border-green-500 text-[10px] sm:text-xs px-2 py-0.5',
+    badgeYellow: 'bg-black text-yellow-500 border border-yellow-500 text-[10px] sm:text-xs px-2 py-0.5',
+    badgeRed: 'bg-black text-red-500 border border-red-500 text-[10px] sm:text-xs px-2 py-0.5',
+    timeLabel: 'text-[8px] sm:text-xs text-green-500/40',
     tooltip: 'bg-black border border-green-500 shadow-[0_0_20px_rgba(34,197,94,0.4)] p-3 max-w-xs z-[9999]',
     tooltipTitle: 'font-bold text-green-500 mb-2 border-b border-green-900 pb-1',
     tooltipLabel: 'text-green-500/60',
     tooltipValue: 'text-green-500',
-    legendText: 'text-xs text-green-500/60',
-    legendDot: 'w-2 h-2 rounded-none',
+    legendText: 'text-[8px] sm:text-xs text-green-500/60',
+    legendDot: 'w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-none',
     emptyText: 'text-green-500/40',
     loader: 'text-green-500',
   },
-
-  // ========== CUPERTINO (Apple Style) ==========
   cupertino: {
-    container: 'min-h-screen bg-[#f5f5f7] text-gray-900 p-6 font-sans',
-    headerTitle: 'text-2xl font-semibold text-gray-900 tracking-tight',
-    headerSubtitle: 'text-sm text-gray-500 mt-1.5',
-    countdownBox: 'flex items-center gap-2 px-3 py-1.5 text-sm bg-white/50 backdrop-blur-md border border-gray-200/50 rounded-full shadow-sm',
+    container: 'min-h-screen bg-[#f5f5f7] text-gray-900 p-4 sm:p-6 font-sans',
+    headerTitle: 'text-xl sm:text-2xl font-semibold text-gray-900 tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-gray-500 mt-1.5',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-1.5 text-sm bg-white/50 backdrop-blur-md border border-gray-200/50 rounded-full shadow-sm',
     countdownText: 'text-blue-500 font-medium',
     countdownLabel: 'text-gray-400',
-    card: 'bg-white rounded-2xl p-5 shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all duration-300',
+    card: 'bg-white rounded-2xl p-4 sm:p-5 shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all duration-300',
     cardHover: 'hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5',
-    modelName: 'font-semibold text-gray-900 truncate max-w-md tracking-tight',
-    statsText: 'text-sm text-gray-400',
+    modelName: 'font-semibold text-gray-900 break-words whitespace-normal text-sm sm:text-base leading-tight tracking-tight',
+    statsText: 'text-xs sm:text-sm text-gray-400',
     statsValue: 'text-gray-900 font-medium',
     statusGreen: 'bg-[#34c759]',
     statusYellow: 'bg-[#ffcc00]',
     statusRed: 'bg-[#ff3b30]',
     statusEmpty: 'bg-gray-100',
     statusHover: 'hover:opacity-80 hover:scale-y-110 origin-bottom',
-    badgeGreen: 'bg-[#34c759]/10 text-[#34c759] px-2.5 py-0.5 text-xs font-medium rounded-full',
-    badgeYellow: 'bg-[#ffcc00]/10 text-[#ffcc00] px-2.5 py-0.5 text-xs font-medium rounded-full',
-    badgeRed: 'bg-[#ff3b30]/10 text-[#ff3b30] px-2.5 py-0.5 text-xs font-medium rounded-full',
-    timeLabel: 'text-[11px] text-gray-400 font-medium uppercase tracking-wide mt-3',
+    badgeGreen: 'bg-[#34c759]/10 text-[#34c759] px-2 py-0.5 text-[10px] sm:text-xs font-medium rounded-full',
+    badgeYellow: 'bg-[#ffcc00]/10 text-[#ffcc00] px-2 py-0.5 text-[10px] sm:text-xs font-medium rounded-full',
+    badgeRed: 'bg-[#ff3b30]/10 text-[#ff3b30] px-2 py-0.5 text-[10px] sm:text-xs font-medium rounded-full',
+    timeLabel: 'text-[9px] sm:text-[11px] text-gray-400 font-medium uppercase tracking-wide mt-3',
     tooltip: 'bg-white/90 backdrop-blur-xl border border-gray-100 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] p-4 z-[9999]',
     tooltipTitle: 'font-semibold text-gray-900 mb-2 pb-2 border-b border-gray-100',
     tooltipLabel: 'text-gray-500 text-xs',
     tooltipValue: 'text-gray-900 font-medium',
-    legendText: 'text-xs text-gray-400 font-medium',
-    legendDot: 'w-2.5 h-2.5 rounded-full',
+    legendText: 'text-[9px] sm:text-xs text-gray-400 font-medium',
+    legendDot: 'w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full',
     emptyText: 'text-gray-400',
     loader: 'text-gray-400',
   },
-
-  // ========== MATERIAL (Google Style) ==========
   material: {
-    container: 'min-h-screen bg-[#f0f4f8] text-[#1f1f1f] p-6 font-sans',
-    headerTitle: 'text-3xl font-normal text-[#1f1f1f] tracking-tight',
-    headerSubtitle: 'text-sm text-[#444746] mt-1.5',
-    countdownBox: 'flex items-center gap-2 px-4 py-2 text-sm bg-[#e0e2ec] text-[#1f1f1f] rounded-2xl',
+    container: 'min-h-screen bg-[#f0f4f8] text-[#1f1f1f] p-4 sm:p-6 font-sans',
+    headerTitle: 'text-2xl sm:text-3xl font-normal text-[#1f1f1f] tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-[#444746] mt-1.5',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-2 text-sm bg-[#e0e2ec] text-[#1f1f1f] rounded-2xl',
     countdownText: 'text-[#005cbb] font-medium',
     countdownLabel: 'text-[#444746]',
-    card: 'bg-[#fdfcff] rounded-[20px] p-5 shadow-sm transition-all duration-300',
+    card: 'bg-[#fdfcff] rounded-[20px] p-4 sm:p-5 shadow-sm transition-all duration-300',
     cardHover: 'hover:shadow-md hover:bg-[#f8faff]',
-    modelName: 'font-medium text-[#1f1f1f] truncate max-w-md text-lg',
-    statsText: 'text-sm text-[#444746]',
+    modelName: 'font-medium text-[#1f1f1f] break-words whitespace-normal text-base sm:text-lg leading-tight',
+    statsText: 'text-xs sm:text-sm text-[#444746]',
     statsValue: 'text-[#1f1f1f] font-medium',
     statusGreen: 'bg-[#1e8e3e]',
     statusYellow: 'bg-[#f9ab00]',
     statusRed: 'bg-[#d93025]',
     statusEmpty: 'bg-[#e0e2ec]',
     statusHover: 'hover:ring-4 hover:ring-[#d3e3fd] hover:z-10 relative rounded-sm',
-    badgeGreen: 'bg-[#c4eed0] text-[#072711] px-3 py-1 rounded-lg text-sm font-medium',
-    badgeYellow: 'bg-[#ffe082] text-[#261900] px-3 py-1 rounded-lg text-sm font-medium',
-    badgeRed: 'bg-[#f9d7e5] text-[#3e001d] px-3 py-1 rounded-lg text-sm font-medium',
-    timeLabel: 'text-xs text-[#444746]',
+    badgeGreen: 'bg-[#c4eed0] text-[#072711] px-3 py-1 rounded-lg text-xs sm:text-sm font-medium',
+    badgeYellow: 'bg-[#ffe082] text-[#261900] px-3 py-1 rounded-lg text-xs sm:text-sm font-medium',
+    badgeRed: 'bg-[#f9d7e5] text-[#3e001d] px-3 py-1 rounded-lg text-xs sm:text-sm font-medium',
+    timeLabel: 'text-[10px] sm:text-xs text-[#444746]',
     tooltip: 'bg-[#2f3033] text-[#f2f2f2] rounded-lg shadow-lg p-3 z-[9999]',
     tooltipTitle: 'font-medium text-[#f2f2f2] mb-2',
     tooltipLabel: 'text-[#c4c7c5] text-xs',
     tooltipValue: 'text-[#f2f2f2] font-medium',
-    legendText: 'text-xs text-[#444746]',
-    legendDot: 'w-3 h-3 rounded-full',
+    legendText: 'text-[9px] sm:text-xs text-[#444746]',
+    legendDot: 'w-2 sm:w-3 h-2 sm:h-3 rounded-full',
     emptyText: 'text-[#444746]',
     loader: 'text-[#005cbb]',
   },
-
-  // ========== OPENAI (Origin Style) ==========
   openai: {
-    container: 'min-h-screen bg-[#343541] text-gray-100 p-6 font-sans',
-    headerTitle: 'text-2xl font-bold text-white tracking-tight',
-    headerSubtitle: 'text-sm text-gray-400 mt-1.5',
-    countdownBox: 'flex items-center gap-2 px-3 py-1.5 text-sm bg-[#40414f] rounded text-gray-300',
+    container: 'min-h-screen bg-[#343541] text-gray-100 p-4 sm:p-6 font-sans',
+    headerTitle: 'text-xl sm:text-2xl font-bold text-white tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-gray-400 mt-1.5',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-1.5 text-sm bg-[#40414f] rounded text-gray-300',
     countdownText: 'text-[#10a37f] font-medium',
     countdownLabel: 'text-gray-500',
-    card: 'bg-[#444654] rounded-md p-5 transition-all duration-200 border border-transparent',
+    card: 'bg-[#444654] rounded-md p-4 sm:p-5 transition-all duration-200 border border-transparent',
     cardHover: 'hover:border-gray-500/50',
-    modelName: 'font-medium text-white truncate max-w-md',
-    statsText: 'text-sm text-gray-400',
+    modelName: 'font-medium text-white break-words whitespace-normal text-sm sm:text-base leading-tight',
+    statsText: 'text-xs sm:text-sm text-gray-400',
     statsValue: 'text-gray-200 font-medium',
     statusGreen: 'bg-[#10a37f]',
     statusYellow: 'bg-[#f7d070]',
     statusRed: 'bg-[#ef4444]',
     statusEmpty: 'bg-[#565869]',
     statusHover: 'hover:opacity-80',
-    badgeGreen: 'text-[#10a37f] text-xs font-medium uppercase tracking-wide',
-    badgeYellow: 'text-[#f7d070] text-xs font-medium uppercase tracking-wide',
-    badgeRed: 'text-[#ef4444] text-xs font-medium uppercase tracking-wide',
-    timeLabel: 'text-xs text-gray-500 font-medium',
+    badgeGreen: 'text-[#10a37f] text-[9px] sm:text-xs font-medium uppercase tracking-wide',
+    badgeYellow: 'text-[#f7d070] text-[9px] sm:text-xs font-medium uppercase tracking-wide',
+    badgeRed: 'text-[#ef4444] text-[9px] sm:text-xs font-medium uppercase tracking-wide',
+    timeLabel: 'text-[8px] sm:text-xs text-gray-500 font-medium',
     tooltip: 'bg-[#202123] border border-gray-600 rounded shadow-xl p-3 z-[9999]',
     tooltipTitle: 'font-medium text-white mb-2 text-sm',
     tooltipLabel: 'text-gray-400 text-xs',
     tooltipValue: 'text-white text-sm',
-    legendText: 'text-xs text-gray-400',
-    legendDot: 'w-2.5 h-2.5 rounded-sm',
+    legendText: 'text-[9px] sm:text-xs text-gray-400',
+    legendDot: 'w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-sm',
     emptyText: 'text-gray-500',
     loader: 'text-gray-400',
   },
-
-  // ========== ANTHROPIC (Human Style) ==========
   anthropic: {
-    container: 'min-h-screen bg-[#f4f1ea] text-[#191919] p-6 font-sans',
-    headerTitle: 'text-3xl font-serif font-medium text-[#191919] tracking-tight',
-    headerSubtitle: 'text-sm text-[#6b665c] mt-1.5 font-serif',
+    container: 'min-h-screen bg-[#f4f1ea] text-[#191919] p-4 sm:p-6 font-sans',
+    headerTitle: 'text-2xl sm:text-3xl font-serif font-medium text-[#191919] tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-[#6b665c] mt-1.5 font-serif',
     countdownBox: 'flex items-center gap-2 px-0 py-0 text-sm bg-transparent text-[#6b665c]',
     countdownText: 'text-[#d97757] font-serif italic',
     countdownLabel: 'text-[#6b665c] font-serif italic',
-    card: 'bg-white border border-[#e6e1d6] rounded-xl p-6 shadow-sm transition-all duration-300',
+    card: 'bg-white border border-[#e6e1d6] rounded-xl p-4 sm:p-6 shadow-sm transition-all duration-300',
     cardHover: 'hover:border-[#d97757]/30 hover:shadow-md',
-    modelName: 'font-serif font-medium text-[#191919] truncate max-w-md text-xl',
-    statsText: 'text-sm text-[#6b665c] font-serif',
+    modelName: 'font-serif font-medium text-[#191919] break-words whitespace-normal text-base sm:text-xl leading-tight',
+    statsText: 'text-xs sm:text-sm text-[#6b665c] font-serif',
     statsValue: 'text-[#191919] font-medium font-sans',
-    statusGreen: 'bg-[#2d4f43]', // Dark Green used by Anthropic
+    statusGreen: 'bg-[#2d4f43]',
     statusYellow: 'bg-[#e3b26c]',
-    statusRed: 'bg-[#d97757]', // Terracotta
+    statusRed: 'bg-[#d97757]',
     statusEmpty: 'bg-[#e6e1d6]',
     statusHover: 'hover:scale-y-110 origin-bottom transition-transform',
-    badgeGreen: 'bg-[#eef3f1] text-[#2d4f43] border border-[#d6e3de] px-2 py-0.5 text-xs font-serif rounded',
-    badgeYellow: 'bg-[#fff9ed] text-[#b38641] border border-[#faecd1] px-2 py-0.5 text-xs font-serif rounded',
-    badgeRed: 'bg-[#fdf3f0] text-[#d97757] border border-[#f5dcd6] px-2 py-0.5 text-xs font-serif rounded',
-    timeLabel: 'text-xs text-[#9c9485] font-serif italic',
+    badgeGreen: 'bg-[#eef3f1] text-[#2d4f43] border border-[#d6e3de] px-2 py-0.5 text-[10px] sm:text-xs font-serif rounded',
+    badgeYellow: 'bg-[#fff9ed] text-[#b38641] border border-[#faecd1] px-2 py-0.5 text-[10px] sm:text-xs font-serif rounded',
+    badgeRed: 'bg-[#fdf3f0] text-[#d97757] border border-[#f5dcd6] px-2 py-0.5 text-[10px] sm:text-xs font-serif rounded',
+    timeLabel: 'text-[9px] sm:text-xs text-[#9c9485] font-serif italic',
     tooltip: 'bg-white border border-[#e6e1d6] rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.08)] p-4 z-[9999]',
     tooltipTitle: 'font-serif font-medium text-[#191919] mb-2 pb-2 border-b border-[#f4f1ea]',
     tooltipLabel: 'text-[#6b665c] font-serif text-xs',
     tooltipValue: 'text-[#191919] font-sans',
-    legendText: 'text-xs text-[#6b665c] font-serif',
-    legendDot: 'w-2.5 h-2.5 rounded-full',
+    legendText: 'text-[9px] sm:text-xs text-[#6b665c] font-serif',
+    legendDot: 'w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full',
     emptyText: 'text-[#6b665c] font-serif italic',
     loader: 'text-[#d97757]',
   },
-
-  // ========== VERCEL (Geist Style) ==========
   vercel: {
-    container: 'min-h-screen bg-black text-white p-6 font-sans tracking-tight',
+    container: 'min-h-screen bg-black text-white p-4 sm:p-6 font-sans tracking-tight',
     background: `
       background-color: #000;
       background-image: radial-gradient(#333 1px, transparent 1px);
       background-size: 32px 32px;
     `,
-    headerTitle: 'text-2xl font-bold text-white tracking-tight',
-    headerSubtitle: 'text-sm text-[#888] mt-1.5 font-medium',
-    countdownBox: 'flex items-center gap-2 px-3 py-1.5 text-sm bg-[#111] border border-[#333] rounded-md transition-colors hover:border-[#444]',
+    headerTitle: 'text-xl sm:text-2xl font-bold text-white tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-[#888] mt-1.5 font-medium',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-1.5 text-sm bg-[#111] border border-[#333] rounded-md transition-colors hover:border-[#444]',
     countdownText: 'text-white font-mono font-medium',
     countdownLabel: 'text-[#666]',
-    card: 'bg-black border border-[#333] rounded-lg p-5 transition-all duration-200 group',
-    cardHover: 'hover:border-white', // Iconic Vercel hover effect
-    modelName: 'font-bold text-white truncate max-w-md tracking-tight group-hover:text-white transition-colors',
-    statsText: 'text-sm text-[#888] font-medium',
+    card: 'bg-black border border-[#333] rounded-lg p-4 sm:p-5 transition-all duration-200 group',
+    cardHover: 'hover:border-white',
+    modelName: 'font-bold text-white break-words whitespace-normal text-sm sm:text-base leading-tight tracking-tight group-hover:text-white transition-colors',
+    statsText: 'text-xs sm:text-sm text-[#888] font-medium',
     statsValue: 'text-white font-bold',
-    statusGreen: 'bg-[#0070f3]', // Vercel Blue
+    statusGreen: 'bg-[#0070f3]',
     statusYellow: 'bg-[#f5a623]',
     statusRed: 'bg-[#ff0000]',
     statusEmpty: 'bg-[#1a1a1a]',
     statusHover: 'hover:opacity-80 transition-opacity',
-    badgeGreen: 'bg-[#0070f3]/10 text-[#0070f3] border border-[#0070f3]/20 px-2 py-0.5 text-xs font-semibold rounded',
-    badgeYellow: 'bg-[#f5a623]/10 text-[#f5a623] border border-[#f5a623]/20 px-2 py-0.5 text-xs font-semibold rounded',
-    badgeRed: 'bg-[#ff0000]/10 text-[#ff0000] border border-[#ff0000]/20 px-2 py-0.5 text-xs font-semibold rounded',
-    timeLabel: 'text-[10px] text-[#666] font-mono font-medium uppercase tracking-wider',
+    badgeGreen: 'bg-[#0070f3]/10 text-[#0070f3] border border-[#0070f3]/20 px-2 py-0.5 text-[9px] sm:text-xs font-semibold rounded',
+    badgeYellow: 'bg-[#f5a623]/10 text-[#f5a623] border border-[#f5a623]/20 px-2 py-0.5 text-[9px] sm:text-xs font-semibold rounded',
+    badgeRed: 'bg-[#ff0000]/10 text-[#ff0000] border border-[#ff0000]/20 px-2 py-0.5 text-[9px] sm:text-xs font-semibold rounded',
+    timeLabel: 'text-[8px] sm:text-[10px] text-[#666] font-mono font-medium uppercase tracking-wider',
     tooltip: 'bg-black border border-[#333] rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.1)] p-4 z-[9999]',
     tooltipTitle: 'font-bold text-white mb-2 pb-2 border-b border-[#333]',
     tooltipLabel: 'text-[#888] text-xs font-medium uppercase tracking-wider',
     tooltipValue: 'text-white font-mono',
-    legendText: 'text-xs text-[#666] font-medium uppercase tracking-wider',
-    legendDot: 'w-2 h-2 rounded-full',
+    legendText: 'text-[8px] sm:text-xs text-[#666] font-medium uppercase tracking-wider',
+    legendDot: 'w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full',
     emptyText: 'text-[#666] font-medium',
     loader: 'text-white',
   },
-
-  // ========== LINEAR (Streamlined Style) ==========
   linear: {
-    container: 'min-h-screen bg-[#0f1015] text-[#ededee] p-6 font-sans',
-    // Subtle top highlight
+    container: 'min-h-screen bg-[#0f1015] text-[#ededee] p-4 sm:p-6 font-sans',
     background: 'background: radial-gradient(circle at 50% 0%, rgba(94,106,210,0.15), transparent 60%), #0f1015',
-    headerTitle: 'text-2xl font-medium text-[#ededee] tracking-tight',
-    headerSubtitle: 'text-sm text-[#8a8f98] mt-1.5',
-    countdownBox: 'flex items-center gap-2 px-3 py-1.5 text-sm bg-[#1a1b21] border border-[#2e2f36] rounded-[6px] shadow-sm',
+    headerTitle: 'text-xl sm:text-2xl font-medium text-[#ededee] tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-[#8a8f98] mt-1.5',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-1.5 text-sm bg-[#1a1b21] border border-[#2e2f36] rounded-[6px] shadow-sm',
     countdownText: 'text-[#5e6ad2] font-medium',
     countdownLabel: 'text-[#8a8f98]',
-    card: 'bg-[#16171d] border border-[#282930] rounded-xl p-5 transition-all duration-300 shadow-[0_2px_4px_rgba(0,0,0,0.2)]',
+    card: 'bg-[#16171d] border border-[#282930] rounded-xl p-4 sm:p-5 transition-all duration-300 shadow-[0_2px_4px_rgba(0,0,0,0.2)]',
     cardHover: 'hover:border-[#3a3b42] hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:bg-[#1a1b21]',
-    modelName: 'font-medium text-[#ededee] truncate max-w-md',
-    statsText: 'text-sm text-[#8a8f98]',
+    modelName: 'font-medium text-[#ededee] break-words whitespace-normal text-sm sm:text-base leading-tight',
+    statsText: 'text-xs sm:text-sm text-[#8a8f98]',
     statsValue: 'text-[#ededee] font-medium',
-    statusGreen: 'bg-[#5e6ad2]', // Linear Purple/Blue
+    statusGreen: 'bg-[#5e6ad2]',
     statusYellow: 'bg-[#d29922]',
     statusRed: 'bg-[#df4a4a]',
     statusEmpty: 'bg-[#25262e]',
     statusHover: 'hover:brightness-125 transition-all duration-200 hover:scale-y-110 origin-bottom',
-    badgeGreen: 'bg-[#5e6ad2]/10 text-[#7c86e0] border border-[#5e6ad2]/20 px-2.5 py-0.5 text-xs font-medium rounded',
-    badgeYellow: 'bg-[#d29922]/10 text-[#e6b955] border border-[#d29922]/20 px-2.5 py-0.5 text-xs font-medium rounded',
-    badgeRed: 'bg-[#df4a4a]/10 text-[#f57171] border border-[#df4a4a]/20 px-2.5 py-0.5 text-xs font-medium rounded',
-    timeLabel: 'text-xs text-[#636873] font-medium',
+    badgeGreen: 'bg-[#5e6ad2]/10 text-[#7c86e0] border border-[#5e6ad2]/20 px-2.5 py-0.5 text-[9px] sm:text-xs font-medium rounded',
+    badgeYellow: 'bg-[#d29922]/10 text-[#e6b955] border border-[#d29922]/20 px-2.5 py-0.5 text-[9px] sm:text-xs font-medium rounded',
+    badgeRed: 'bg-[#df4a4a]/10 text-[#f57171] border border-[#df4a4a]/20 px-2.5 py-0.5 text-[9px] sm:text-xs font-medium rounded',
+    timeLabel: 'text-[9px] sm:text-xs text-[#636873] font-medium',
     tooltip: 'bg-[#16171d] border border-[#2e2f36] rounded-lg shadow-[0_8px_24px_rgba(0,0,0,0.4)] p-3 z-[9999]',
     tooltipTitle: 'font-medium text-[#ededee] mb-2 pb-2 border-b border-[#2e2f36]',
     tooltipLabel: 'text-[#8a8f98] text-xs',
     tooltipValue: 'text-[#ededee]',
-    legendText: 'text-xs text-[#8a8f98] font-medium',
-    legendDot: 'w-2.5 h-2.5 rounded-full shadow-[0_0_8px_rgba(94,106,210,0.4)]',
+    legendText: 'text-[8px] sm:text-xs text-[#8a8f98] font-medium',
+    legendDot: 'w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full shadow-[0_0_8px_rgba(94,106,210,0.4)]',
     emptyText: 'text-[#8a8f98]',
     loader: 'text-[#5e6ad2]',
   },
-
-  // ========== STRIPE (Fintech Style) ==========
   stripe: {
-    container: 'min-h-screen bg-white text-[#3c4257] p-6 font-sans',
-    // Mesh gradient emulation
+    container: 'min-h-screen bg-white text-[#3c4257] p-4 sm:p-6 font-sans',
     background: 'background-image: radial-gradient(at 0% 0%, rgba(99, 91, 255, 0.15) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(0, 212, 255, 0.15) 0px, transparent 50%); background-color: #f7f9fc;',
-    headerTitle: 'text-2xl font-bold text-[#3c4257] tracking-tight',
-    headerSubtitle: 'text-sm text-[#697386] mt-1.5 font-medium',
-    countdownBox: 'flex items-center gap-2 px-3 py-1.5 text-sm bg-white rounded-full shadow-sm border border-[#e3e8ee]',
+    headerTitle: 'text-xl sm:text-2xl font-bold text-[#3c4257] tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-[#697386] mt-1.5 font-medium',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-1.5 text-sm bg-white rounded-full shadow-sm border border-[#e3e8ee]',
     countdownText: 'text-[#635bff] font-semibold',
     countdownLabel: 'text-[#697386]',
-    card: 'bg-white rounded-lg p-5 shadow-[0_2px_5px_-1px_rgba(50,50,93,0.25),0_1px_3px_-1px_rgba(0,0,0,0.3)] transition-all duration-300',
+    card: 'bg-white rounded-lg p-4 sm:p-5 shadow-[0_2px_5px_-1px_rgba(50,50,93,0.25),0_1px_3px_-1px_rgba(0,0,0,0.3)] transition-all duration-300',
     cardHover: 'hover:shadow-[0_6px_12px_-2px_rgba(50,50,93,0.25),0_3px_7px_-3px_rgba(0,0,0,0.3)] hover:-translate-y-0.5',
-    modelName: 'font-bold text-[#3c4257] truncate max-w-md',
-    statsText: 'text-sm text-[#697386] font-medium',
+    modelName: 'font-bold text-[#3c4257] break-words whitespace-normal text-sm sm:text-base leading-tight',
+    statsText: 'text-xs sm:text-sm text-[#697386] font-medium',
     statsValue: 'text-[#3c4257] font-bold',
-    statusGreen: 'bg-[#635bff]', // Stripe Blurple
+    statusGreen: 'bg-[#635bff]',
     statusYellow: 'bg-[#f5a623]',
     statusRed: 'bg-[#e22525]',
     statusEmpty: 'bg-[#e3e8ee]',
     statusHover: 'hover:opacity-80 transition-opacity',
-    badgeGreen: 'bg-[#635bff]/10 text-[#635bff] px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider rounded',
-    badgeYellow: 'bg-[#f5a623]/10 text-[#f5a623] px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider rounded',
-    badgeRed: 'bg-[#e22525]/10 text-[#e22525] px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider rounded',
-    timeLabel: 'text-xs text-[#697386] font-semibold uppercase tracking-wide',
+    badgeGreen: 'bg-[#635bff]/10 text-[#635bff] px-2.5 py-0.5 text-[9px] sm:text-xs font-bold uppercase tracking-wider rounded',
+    badgeYellow: 'bg-[#f5a623]/10 text-[#f5a623] px-2.5 py-0.5 text-[9px] sm:text-xs font-bold uppercase tracking-wider rounded',
+    badgeRed: 'bg-[#e22525]/10 text-[#e22525] px-2.5 py-0.5 text-[9px] sm:text-xs font-bold uppercase tracking-wider rounded',
+    timeLabel: 'text-[8px] sm:text-xs text-[#697386] font-semibold uppercase tracking-wide',
     tooltip: 'bg-white rounded-lg shadow-[0_13px_27px_-5px_rgba(50,50,93,0.25),0_8px_16px_-8px_rgba(0,0,0,0.3)] p-4 z-[9999]',
     tooltipTitle: 'font-bold text-[#3c4257] mb-2 pb-2 border-b border-[#e3e8ee]',
     tooltipLabel: 'text-[#697386] text-xs font-semibold uppercase',
     tooltipValue: 'text-[#3c4257] font-semibold',
-    legendText: 'text-xs text-[#697386] font-semibold uppercase tracking-wide',
-    legendDot: 'w-2.5 h-2.5 rounded-full',
+    legendText: 'text-[8px] sm:text-xs text-[#697386] font-semibold uppercase tracking-wide',
+    legendDot: 'w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full',
     emptyText: 'text-[#697386] font-medium',
     loader: 'text-[#635bff]',
   },
-
-  // ========== GITHUB (Primer Dark Style) ==========
   github: {
-    container: 'min-h-screen bg-[#0d1117] text-[#c9d1d9] p-6 font-sans',
-    headerTitle: 'text-2xl font-semibold text-[#c9d1d9] tracking-tight',
-    headerSubtitle: 'text-sm text-[#8b949e] mt-1.5',
-    countdownBox: 'flex items-center gap-2 px-3 py-1.5 text-sm bg-[#161b22] border border-[#30363d] rounded-md',
+    container: 'min-h-screen bg-[#0d1117] text-[#c9d1d9] p-4 sm:p-6 font-sans',
+    headerTitle: 'text-xl sm:text-2xl font-semibold text-[#c9d1d9] tracking-tight',
+    headerSubtitle: 'text-xs sm:text-sm text-[#8b949e] mt-1.5',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-1.5 text-sm bg-[#161b22] border border-[#30363d] rounded-md',
     countdownText: 'text-[#58a6ff] font-semibold',
     countdownLabel: 'text-[#8b949e]',
-    card: 'bg-[#161b22] border border-[#30363d] rounded-md p-5 transition-all duration-200',
+    card: 'bg-[#161b22] border border-[#30363d] rounded-md p-4 sm:p-5 transition-all duration-200',
     cardHover: 'hover:border-[#8b949e]',
-    modelName: 'font-semibold text-[#c9d1d9] truncate max-w-md hover:text-[#58a6ff] transition-colors',
-    statsText: 'text-sm text-[#8b949e]',
+    modelName: 'font-semibold text-[#c9d1d9] break-words whitespace-normal text-sm sm:text-base leading-tight hover:text-[#58a6ff] transition-colors',
+    statsText: 'text-xs sm:text-sm text-[#8b949e]',
     statsValue: 'text-[#c9d1d9] font-semibold',
-    statusGreen: 'bg-[#238636]', // Primer Green
-    statusYellow: 'bg-[#9e6a03]', // Primer Yellow
-    statusRed: 'bg-[#da3633]', // Primer Red
+    statusGreen: 'bg-[#238636]',
+    statusYellow: 'bg-[#9e6a03]',
+    statusRed: 'bg-[#da3633]',
     statusEmpty: 'bg-[#21262d]',
     statusHover: 'hover:brightness-110 transition-all',
-    badgeGreen: 'bg-[#238636]/15 text-[#3fb950] border border-[#238636]/40 px-2 py-0.5 text-xs font-medium rounded-2xl',
-    badgeYellow: 'bg-[#9e6a03]/15 text-[#d29922] border border-[#9e6a03]/40 px-2 py-0.5 text-xs font-medium rounded-2xl',
-    badgeRed: 'bg-[#da3633]/15 text-[#f85149] border border-[#da3633]/40 px-2 py-0.5 text-xs font-medium rounded-2xl',
-    timeLabel: 'text-xs text-[#8b949e]',
+    badgeGreen: 'bg-[#238636]/15 text-[#3fb950] border border-[#238636]/40 px-2 py-0.5 text-[9px] sm:text-xs font-medium rounded-2xl',
+    badgeYellow: 'bg-[#9e6a03]/15 text-[#d29922] border border-[#9e6a03]/40 px-2 py-0.5 text-[9px] sm:text-xs font-medium rounded-2xl',
+    badgeRed: 'bg-[#da3633]/15 text-[#f85149] border border-[#da3633]/40 px-2 py-0.5 text-[9px] sm:text-xs font-medium rounded-2xl',
+    timeLabel: 'text-[8px] sm:text-xs text-[#8b949e]',
     tooltip: 'bg-[#161b22] border border-[#30363d] rounded-md shadow-xl p-3 z-[9999]',
     tooltipTitle: 'font-semibold text-[#c9d1d9] mb-2 pb-2 border-b border-[#30363d]',
     tooltipLabel: 'text-[#8b949e] text-xs',
     tooltipValue: 'text-[#c9d1d9] font-mono text-sm',
-    legendText: 'text-xs text-[#8b949e]',
-    legendDot: 'w-2.5 h-2.5 rounded-sm', // GitHub contribution cells are slightly rounded squares
+    legendText: 'text-[8px] sm:text-xs text-[#8b949e]',
+    legendDot: 'w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-sm',
     emptyText: 'text-[#8b949e]',
     loader: 'text-[#58a6ff]',
   },
-
-  // ========== DISCORD (Gaming Style) ==========
   discord: {
-    container: 'min-h-screen bg-[#313338] text-[#dbdee1] p-6 font-sans',
-    headerTitle: 'text-2xl font-black text-[#f2f3f5] tracking-tight uppercase',
-    headerSubtitle: 'text-sm text-[#949ba4] mt-1.5 font-medium',
-    countdownBox: 'flex items-center gap-2 px-3 py-1.5 text-sm bg-[#1e1f22] rounded-[4px] shadow-sm',
-    countdownText: 'text-[#5865F2] font-bold', // Blurple
+    container: 'min-h-screen bg-[#313338] text-[#dbdee1] p-4 sm:p-6 font-sans',
+    headerTitle: 'text-xl sm:text-2xl font-black text-[#f2f3f5] tracking-tight uppercase',
+    headerSubtitle: 'text-xs sm:text-sm text-[#949ba4] mt-1.5 font-medium',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-1.5 text-sm bg-[#1e1f22] rounded-[4px] shadow-sm',
+    countdownText: 'text-[#5865F2] font-bold',
     countdownLabel: 'text-[#949ba4]',
-    card: 'bg-[#2b2d31] rounded-[4px] p-5 transition-all duration-200 group',
+    card: 'bg-[#2b2d31] rounded-[4px] p-4 sm:p-5 transition-all duration-200 group',
     cardHover: 'hover:bg-[#404249] hover:shadow-md',
-    modelName: 'font-bold text-[#f2f3f5] truncate max-w-md group-hover:text-white transition-colors',
-    statsText: 'text-sm text-[#949ba4] font-medium',
+    modelName: 'font-bold text-[#f2f3f5] break-words whitespace-normal text-sm sm:text-base leading-tight group-hover:text-white transition-colors',
+    statsText: 'text-xs sm:text-sm text-[#949ba4] font-medium',
     statsValue: 'text-[#f2f3f5] font-bold',
     statusGreen: 'bg-[#23a559]',
     statusYellow: 'bg-[#f0b232]',
     statusRed: 'bg-[#da373c]',
     statusEmpty: 'bg-[#1e1f22]',
     statusHover: 'hover:scale-110 transition-transform origin-center',
-    badgeGreen: 'bg-[#23a559]/20 text-[#23a559] px-2 py-0.5 text-xs font-bold rounded-[4px]',
-    badgeYellow: 'bg-[#f0b232]/20 text-[#f0b232] px-2 py-0.5 text-xs font-bold rounded-[4px]',
-    badgeRed: 'bg-[#da373c]/20 text-[#da373c] px-2 py-0.5 text-xs font-bold rounded-[4px]',
-    timeLabel: 'text-[10px] text-[#949ba4] font-bold uppercase tracking-wide',
+    badgeGreen: 'bg-[#23a559]/20 text-[#23a559] px-2 py-0.5 text-[9px] sm:text-xs font-bold rounded-[4px]',
+    badgeYellow: 'bg-[#f0b232]/20 text-[#f0b232] px-2 py-0.5 text-[9px] sm:text-xs font-bold rounded-[4px]',
+    badgeRed: 'bg-[#da373c]/20 text-[#da373c] px-2 py-0.5 text-[9px] sm:text-xs font-bold rounded-[4px]',
+    timeLabel: 'text-[8px] sm:text-[10px] text-[#949ba4] font-bold uppercase tracking-wide',
     tooltip: 'bg-[#111214] rounded-[4px] shadow-xl p-3 z-[9999]',
     tooltipTitle: 'font-bold text-[#f2f3f5] mb-2',
     tooltipLabel: 'text-[#b5bac1] text-xs font-bold uppercase',
     tooltipValue: 'text-[#f2f3f5] font-bold',
-    legendText: 'text-xs text-[#949ba4] font-bold',
-    legendDot: 'w-3 h-3 rounded-full',
+    legendText: 'text-[8px] sm:text-xs text-[#949ba4] font-bold',
+    legendDot: 'w-2 sm:w-3 h-2 sm:h-3 rounded-full',
     emptyText: 'text-[#949ba4] font-medium',
     loader: 'text-[#5865F2]',
   },
-
-  // ========== TESLA (Industrial Future Style) ==========
   tesla: {
-    container: 'min-h-screen bg-black text-white p-6 font-sans',
-    headerTitle: 'text-2xl font-medium tracking-[0.15em] uppercase text-white',
-    headerSubtitle: 'text-sm text-[#666] mt-2 tracking-wide uppercase',
-    countdownBox: 'flex items-center gap-2 px-4 py-1.5 text-sm border border-[#333] rounded-none',
-    countdownText: 'text-[#e82127] font-medium tracking-wider', // Tesla Red
+    container: 'min-h-screen bg-black text-white p-4 sm:p-6 font-sans',
+    headerTitle: 'text-xl sm:text-2xl font-medium tracking-[0.15em] uppercase text-white',
+    headerSubtitle: 'text-xs sm:text-sm text-[#666] mt-2 tracking-wide uppercase',
+    countdownBox: 'flex items-center gap-2 px-3 sm:px-4 py-1.5 text-sm border border-[#333] rounded-none',
+    countdownText: 'text-[#e82127] font-medium tracking-wider',
     countdownLabel: 'text-[#666] uppercase text-xs tracking-wider',
-    card: 'bg-[#111] border-t-2 border-[#333] p-5 transition-all duration-300 hover:bg-[#181818]',
+    card: 'bg-[#111] border-t-2 border-[#333] p-4 sm:p-5 transition-all duration-300 hover:bg-[#181818]',
     cardHover: 'hover:border-[#e82127] hover:shadow-[0_-4px_10px_rgba(232,33,39,0.2)]',
-    modelName: 'font-medium text-white truncate max-w-md tracking-wider uppercase',
-    statsText: 'text-sm text-[#666] tracking-wide uppercase',
+    modelName: 'font-medium text-white break-words whitespace-normal text-sm sm:text-base leading-tight tracking-wider uppercase',
+    statsText: 'text-xs sm:text-sm text-[#666] tracking-wide uppercase',
     statsValue: 'text-white font-medium',
-    statusGreen: 'bg-white', // Minimalist white for good status in dark mode
-    statusYellow: 'bg-[#e82127]', // Use red for warning/error to keep palette strict
+    statusGreen: 'bg-white',
+    statusYellow: 'bg-[#e82127]',
     statusRed: 'bg-[#e82127]',
     statusEmpty: 'bg-[#222]',
     statusHover: 'hover:bg-[#e82127] transition-colors',
-    badgeGreen: 'border border-white text-white px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.1em]',
-    badgeYellow: 'border border-[#e82127] text-[#e82127] px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.1em]',
-    badgeRed: 'bg-[#e82127] text-white px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.1em]',
-    timeLabel: 'text-[10px] text-[#444] tracking-[0.2em] uppercase',
+    badgeGreen: 'border border-white text-white px-2 py-0.5 text-[8px] sm:text-[10px] font-medium uppercase tracking-[0.1em]',
+    badgeYellow: 'border border-[#e82127] text-[#e82127] px-2 py-0.5 text-[8px] sm:text-[10px] font-medium uppercase tracking-[0.1em]',
+    badgeRed: 'bg-[#e82127] text-white px-2 py-0.5 text-[8px] sm:text-[10px] font-medium uppercase tracking-[0.1em]',
+    timeLabel: 'text-[8px] sm:text-[10px] text-[#444] tracking-[0.2em] uppercase',
     tooltip: 'bg-black border border-[#333] shadow-[0_0_30px_rgba(0,0,0,0.8)] p-4 z-[9999]',
     tooltipTitle: 'font-medium text-white mb-3 pb-2 border-b border-[#333] tracking-widest uppercase text-xs',
-    tooltipLabel: 'text-[#666] text-[10px] uppercase tracking-wider',
+    tooltipLabel: 'text-[#666] text-[8px] sm:text-[10px] uppercase tracking-wider',
     tooltipValue: 'text-white font-medium tracking-wide',
-    legendText: 'text-[10px] text-[#666] tracking-[0.1em] uppercase',
-    legendDot: 'w-2 h-2 rounded-none',
+    legendText: 'text-[8px] sm:text-[10px] text-[#666] tracking-[0.1em] uppercase',
+    legendDot: 'w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-none',
     emptyText: 'text-[#444] uppercase tracking-wider',
     loader: 'text-[#e82127]',
   },
@@ -860,6 +820,17 @@ function getBadgeColor(status: 'green' | 'yellow' | 'red', styles: typeof themeS
          status === 'yellow' ? styles.badgeYellow : styles.badgeRed
 }
 
+// 手机端时间标签缩写辅助函数
+function getCompactTimeLabel(timeWindow: string, index: number): string {
+  const labels = {
+    '1h': ['60m前', '30m前', '现在'],
+    '6h': ['6h前', '3h前', '现在'],
+    '12h': ['12h前', '6h前', '现在'],
+    '24h': ['24h前', '12h前', '现在'],
+  }
+  return labels[timeWindow as keyof typeof labels]?.[index] || ['24h前', '12h前', '现在'][index]
+}
+
 // ============================================================================
 // Main Component
 // ============================================================================
@@ -885,6 +856,7 @@ export function ModelStatusEmbed({
   const [tokenGroups, setTokenGroups] = useState<EmbedTokenGroup[]>([])
   const [groupFilter, setGroupFilter] = useState('all')
   const [siteTitle, setSiteTitle] = useState('')
+  const [isMobile, setIsMobile] = useState(false)
 
   // Tooltip state - lifted to parent to avoid z-index/transform issues
   const [hoveredSlot, setHoveredSlot] = useState<SlotStatus | null>(null)
@@ -892,6 +864,16 @@ export function ModelStatusEmbed({
 
   const apiUrl = import.meta.env.VITE_API_URL || ''
   const styles = themeStyles[theme] || themeStyles.daylight
+
+  // 检测手机屏幕
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Parse URL params for theme override
   useEffect(() => {
@@ -922,7 +904,6 @@ export function ModelStatusEmbed({
         // Load theme from backend if not overridden by URL
         const urlParams = new URLSearchParams(window.location.search)
         if (!urlParams.get('theme') && data.theme) {
-          // Validate theme exists in themeStyles, fallback to daylight for legacy values
           const validTheme = THEMES.find(t => t.id === data.theme) ? data.theme : 'daylight'
           setTheme(validTheme as ThemeId)
         }
@@ -957,10 +938,7 @@ export function ModelStatusEmbed({
   }, [loadConfig])
 
   // Fetch model statuses
-  // Embed page always uses cache to reduce database load
   const fetchModelStatuses = useCallback(async () => {
-    // 选中某个密钥分组时，自动把分组下全部模型并入请求集合，
-    // 用户无需手工把每个模型加进监控列表也能看到分组下的状态。
     const tokenGroupModels = (() => {
       if (!groupFilter.startsWith('token:')) return [] as string[]
       const name = groupFilter.slice(6)
@@ -998,8 +976,6 @@ export function ModelStatusEmbed({
   }, [fetchModelStatuses])
 
   // Auto refresh with visibility change handling
-  // When page is in background, browser throttles setInterval
-  // So we refresh immediately when page becomes visible again
   useEffect(() => {
     if (refreshInterval <= 0) return
 
@@ -1016,17 +992,14 @@ export function ModelStatusEmbed({
       })
     }, 1000)
 
-    // Handle page visibility change
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
         const elapsed = Math.floor((Date.now() - lastRefreshTime) / 1000)
         if (elapsed >= refreshInterval) {
-          // Enough time has passed, refresh immediately
           fetchModelStatuses()
           lastRefreshTime = Date.now()
           setCountdown(refreshInterval)
         } else {
-          // Update countdown to reflect actual remaining time
           setCountdown(Math.max(1, refreshInterval - elapsed))
         }
       }
@@ -1040,7 +1013,6 @@ export function ModelStatusEmbed({
     }
   }, [refreshInterval, fetchModelStatuses])
 
-  // Handler for hover
   const handleSlotHover = (slot: SlotStatus, rect: DOMRect) => {
     setTooltipPosition({
       x: rect.left + rect.width / 2,
@@ -1049,7 +1021,6 @@ export function ModelStatusEmbed({
     setHoveredSlot(slot)
   }
 
-  // Loading state
   if (loading && modelStatuses.length === 0) {
     return (
       <div
@@ -1066,7 +1037,6 @@ export function ModelStatusEmbed({
       className={styles.container}
       style={styles.background ? { background: styles.background.replace(/\s+/g, ' ') } : undefined}
     >
-      {/* Neon theme scan line effect */}
       {theme === 'neon' && (
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px]" />
@@ -1075,14 +1045,14 @@ export function ModelStatusEmbed({
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 sm:mb-6">
           <div>
-            <div className="flex items-center gap-3">
-              {theme !== 'minimal' && <Activity className="h-5 w-5 opacity-60" />}
+            <div className="flex items-center gap-2 sm:gap-3">
+              {theme !== 'minimal' && <Activity className="h-4 sm:h-5 w-4 sm:w-5 opacity-60" />}
               <h1 className={styles.headerTitle}>
                 {theme === 'minimal' ? (siteTitle || 'Status') : (siteTitle || '模型状态监控')}
                 {theme !== 'minimal' && (
-                  <span className="ml-3 text-sm font-normal opacity-60">
+                  <span className="ml-2 sm:ml-3 text-xs sm:text-sm font-normal opacity-60">
                     {THEMES.find(t => t.id === theme)?.name}
                   </span>
                 )}
@@ -1092,15 +1062,14 @@ export function ModelStatusEmbed({
               {TIME_WINDOWS.find(w => w.value === timeWindow)?.label || '24小时'}
               {theme !== 'minimal' && ' 滑动窗口'} · {selectedModels.length} {theme === 'minimal' ? 'models' : '个模型'}
               {lastUpdate && theme !== 'minimal' && (
-                <span className="ml-2">· 更新于 {lastUpdate.toLocaleTimeString('zh-CN')}</span>
+                <span className="ml-1 sm:ml-2">· 更新于 {lastUpdate.toLocaleTimeString('zh-CN')}</span>
               )}
             </p>
           </div>
 
-          {/* Countdown */}
           {refreshInterval > 0 && (
             <div className={styles.countdownBox}>
-              <Timer className="h-4 w-4 opacity-60" />
+              <Timer className="h-3 sm:h-4 w-3 sm:w-4 opacity-60" />
               <span className={styles.countdownText}>{formatCountdown(countdown)}</span>
               {theme !== 'minimal' && <span className={styles.countdownLabel}>后刷新</span>}
             </div>
@@ -1117,7 +1086,7 @@ export function ModelStatusEmbed({
           const redCount = modelStatuses.filter(m => m.current_status === 'red').length
           return (
             <div className={cn(
-              "flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 px-4 py-3 rounded-xl text-sm",
+              "flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 mb-5 sm:mb-6 px-3 sm:px-4 py-2 sm:py-3 rounded-xl text-xs sm:text-sm",
               theme === 'obsidian' && 'bg-[#161b22] border border-gray-800/60',
               theme === 'daylight' && 'bg-white border border-slate-200 shadow-sm',
               theme === 'neon' && 'bg-black/40 border border-purple-500/30',
@@ -1135,28 +1104,28 @@ export function ModelStatusEmbed({
               theme === 'discord' && 'bg-[#2b2d31] rounded-[4px]',
               theme === 'tesla' && 'bg-[#111] border-t-2 border-[#333]',
             )}>
-              <div className={cn("flex items-center gap-2", styles.statsText)}>
+              <div className={cn("flex items-center gap-1 sm:gap-2", styles.statsText)}>
                 <span>总请求</span>
                 <span className={cn(styles.statsValue, 'tabular-nums')}>{totalRequests.toLocaleString()}</span>
               </div>
-              <div className={cn("flex items-center gap-2", styles.statsText)}>
+              <div className={cn("flex items-center gap-1 sm:gap-2", styles.statsText)}>
                 <span>平均成功率</span>
                 <span className={cn(
                   'font-semibold tabular-nums',
                   avgRate >= 95 ? styles.statusGreen.replace('bg-', 'text-') : avgRate >= 80 ? styles.statusYellow.replace('bg-', 'text-') : styles.statusRed.replace('bg-', 'text-')
                 )}>{avgRate}%</span>
               </div>
-              <div className="flex items-center gap-3 ml-auto">
-                <span className="flex items-center gap-1.5">
-                  <span className={cn('w-2 h-2 rounded-full', styles.statusGreen)} />
+              <div className="flex items-center gap-2 sm:gap-3 ml-auto">
+                <span className="flex items-center gap-1 sm:gap-1.5">
+                  <span className={cn('w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full', styles.statusGreen)} />
                   <span className={cn(styles.statsText, 'tabular-nums')}>{greenCount}</span>
                 </span>
-                <span className="flex items-center gap-1.5">
-                  <span className={cn('w-2 h-2 rounded-full', styles.statusYellow)} />
+                <span className="flex items-center gap-1 sm:gap-1.5">
+                  <span className={cn('w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full', styles.statusYellow)} />
                   <span className={cn(styles.statsText, 'tabular-nums')}>{yellowCount}</span>
                 </span>
-                <span className="flex items-center gap-1.5">
-                  <span className={cn('w-2 h-2 rounded-full', styles.statusRed)} />
+                <span className="flex items-center gap-1 sm:gap-1.5">
+                  <span className={cn('w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full', styles.statusRed)} />
                   <span className={cn(styles.statsText, 'tabular-nums')}>{redCount}</span>
                 </span>
               </div>
@@ -1164,9 +1133,8 @@ export function ModelStatusEmbed({
           )
         })()}
 
-        {/* Group Filter Tabs */}
+        {/* Group Filter Tabs - 手机端添加横向滚动支持 */}
         {(customGroups.length > 0 || tokenGroups.length > 0) && modelStatuses.length > 0 && theme !== 'minimal' && (() => {
-          // Count models per group
           const activeModels = modelStatuses.filter(m => m.total_requests > 0)
           const groupCountMap: Record<string, number> = { all: activeModels.length }
           customGroups.forEach(g => {
@@ -1178,13 +1146,13 @@ export function ModelStatusEmbed({
 
           return (
             <div className={cn(
-              "flex items-center gap-2 overflow-x-auto pb-1 mb-5 scrollbar-hide",
+              "flex items-center gap-1 sm:gap-2 overflow-x-auto pb-2 mb-4 sm:mb-5 scrollbar-hide",
             )}>
-              <Tag className="h-4 w-4 opacity-50 flex-shrink-0" />
+              <Tag className="h-3 sm:h-4 w-3 sm:w-4 opacity-50 flex-shrink-0" />
               <button
                 onClick={() => setGroupFilter('all')}
                 className={cn(
-                  "inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border transition-all whitespace-nowrap flex-shrink-0",
+                  "inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs rounded-full border transition-all whitespace-nowrap flex-shrink-0",
                   groupFilter === 'all'
                     ? cn(
                         "font-semibold shadow-sm",
@@ -1212,7 +1180,7 @@ export function ModelStatusEmbed({
                 )}
               >
                 全部
-                <span className="opacity-70 tabular-nums">{groupCountMap.all}</span>
+                <span className="opacity-70 tabular-nums text-[9px] sm:text-[10px]">{groupCountMap.all}</span>
               </button>
               {customGroups.map((group, index) => {
                 const colors = EMBED_GROUP_COLORS[index % EMBED_GROUP_COLORS.length]
@@ -1223,26 +1191,27 @@ export function ModelStatusEmbed({
                     key={group.id}
                     onClick={() => setGroupFilter(group.id)}
                     className={cn(
-                      "inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium rounded-full border transition-all whitespace-nowrap flex-shrink-0",
+                      "inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-2 text-[10px] sm:text-xs font-medium rounded-full border transition-all whitespace-nowrap flex-shrink-0",
                       isActive
                         ? cn("font-semibold shadow-sm", colors)
                         : cn("border-transparent opacity-60 hover:opacity-100", styles.statsText)
                     )}
                   >
                     {group.icon && EMBED_GROUP_ICON_MAP[group.icon]
-                      ? (() => { const IC = EMBED_GROUP_ICON_MAP[group.icon!]; return <IC size={14} className="flex-shrink-0" /> })()
-                      : <Layers size={12} className="flex-shrink-0" />
+                      ? (() => { const IC = EMBED_GROUP_ICON_MAP[group.icon!]; return <IC size={12} className="flex-shrink-0" /> })()
+                      : <Layers size={10} className="flex-shrink-0" />
                     }
-                    {group.name}
-                    <span className="opacity-70 tabular-nums">{count}</span>
+                    <span className={isMobile && group.name.length > 6 ? 'max-w-[60px] truncate' : ''}>
+                      {group.name}
+                    </span>
+                    <span className="opacity-70 tabular-nums text-[9px] sm:text-[10px]">{count}</span>
                   </button>
                 )
               })}
-              {/* Token Group Dropdown (密钥分组数量多时用下拉避免横向溢出) */}
               {tokenGroups.length > 0 && (
                 <>
                   {customGroups.length > 0 && (
-                    <div className="w-px h-4 bg-current opacity-20 flex-shrink-0 mx-0.5" />
+                    <div className="w-px h-3 sm:h-4 bg-current opacity-20 flex-shrink-0 mx-0.5" />
                   )}
                   <TokenGroupDropdown
                     groups={tokenGroups}
@@ -1257,10 +1226,10 @@ export function ModelStatusEmbed({
           )
         })()}
 
-        {/* Model Status Cards */}
+        {/* Model Status Cards - 手机端改为1列布局 */}
         {modelStatuses.length > 0 ? (
           <div className={cn(
-            theme === 'minimal' ? 'divide-y divide-gray-100' : 'grid grid-cols-1 lg:grid-cols-2 gap-4'
+            theme === 'minimal' ? 'divide-y divide-gray-100' : 'grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4'
           )}>
             {modelStatuses
               .filter(model => {
@@ -1281,28 +1250,29 @@ export function ModelStatusEmbed({
                 styles={styles}
                 onHover={handleSlotHover}
                 onLeave={() => setHoveredSlot(null)}
+                isMobile={isMobile}
               />
             ))}
           </div>
         ) : (
-          <div className={cn("text-center py-16", styles.emptyText)}>
+          <div className={cn("text-center py-12 sm:py-16", styles.emptyText)}>
             {selectedModels.length === 0 ? '请在管理界面选择要监控的模型' : '暂无模型状态数据'}
           </div>
         )}
 
         {/* Legend */}
         <div className={cn(
-          "mt-8 flex items-center justify-center gap-6",
-          theme === 'minimal' && 'mt-4 gap-4'
+          "mt-6 sm:mt-8 flex items-center justify-center gap-3 sm:gap-6 flex-wrap",
+          theme === 'minimal' && 'mt-3 sm:mt-4 gap-2 sm:gap-4'
         )}>
           {['green', 'yellow', 'red'].map((status) => (
-            <div key={status} className="flex items-center gap-2">
+            <div key={status} className="flex items-center gap-1 sm:gap-2">
               <span className={cn(
                 styles.legendDot,
                 status === 'green' ? styles.statusGreen :
                 status === 'yellow' ? styles.statusYellow : styles.statusRed
               )} />
-              <span className={styles.legendText}>
+              <span className={cn(styles.legendText, "text-[9px] sm:text-xs")}>
                 {theme === 'minimal'
                   ? (status === 'green' ? '≥95%' : status === 'yellow' ? '80-95%' : '<80%')
                   : (status === 'green' ? '成功率 ≥ 95%' : status === 'yellow' ? '成功率 80-95%' : '成功率 < 80%')
@@ -1310,10 +1280,9 @@ export function ModelStatusEmbed({
               </span>
             </div>
           ))}
-          {/* No requests indicator */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <span className={cn(styles.legendDot, styles.statusEmpty)} />
-            <span className={styles.legendText}>
+            <span className={cn(styles.legendText, "text-[9px] sm:text-xs")}>
               {theme === 'minimal' ? 'No req' : '无请求'}
             </span>
           </div>
@@ -1323,7 +1292,7 @@ export function ModelStatusEmbed({
       {/* Global Tooltip */}
       {hoveredSlot && (
         <div
-          className={cn("fixed z-50 pointer-events-none text-sm", styles.tooltip)}
+          className={cn("fixed z-50 pointer-events-none text-xs sm:text-sm", styles.tooltip)}
           style={{
             left: tooltipPosition.x,
             top: tooltipPosition.y,
@@ -1333,16 +1302,16 @@ export function ModelStatusEmbed({
           <div className={styles.tooltipTitle}>
             {formatDateTime(hoveredSlot.start_time)} - {formatTime(hoveredSlot.end_time)}
           </div>
-          <div className="space-y-1.5">
-            <div className="flex justify-between gap-6">
+          <div className="space-y-1 sm:space-y-1.5">
+            <div className="flex justify-between gap-4 sm:gap-6">
               <span className={styles.tooltipLabel}>总请求</span>
               <span className={styles.tooltipValue}>{hoveredSlot.total_requests}</span>
             </div>
-            <div className="flex justify-between gap-6">
+            <div className="flex justify-between gap-4 sm:gap-6">
               <span className={styles.tooltipLabel}>成功数</span>
               <span className={cn(styles.tooltipValue, 'text-emerald-400')}>{hoveredSlot.success_count}</span>
             </div>
-            <div className="flex justify-between gap-6">
+            <div className="flex justify-between gap-4 sm:gap-6">
               <span className={styles.tooltipLabel}>成功率</span>
               <span className={cn(
                 styles.tooltipValue,
@@ -1369,9 +1338,10 @@ interface EmbedModelCardProps {
   styles: typeof themeStyles.obsidian
   onHover: (slot: SlotStatus, rect: DOMRect) => void
   onLeave: () => void
+  isMobile?: boolean
 }
 
-function EmbedModelCard({ model, theme, styles, onHover, onLeave }: EmbedModelCardProps) {
+function EmbedModelCard({ model, theme, styles, onHover, onLeave, isMobile = false }: EmbedModelCardProps) {
   
   const handleMouseEnter = (slot: SlotStatus, event: React.MouseEvent) => {
     const rect = event.currentTarget.getBoundingClientRect()
@@ -1380,10 +1350,14 @@ function EmbedModelCard({ model, theme, styles, onHover, onLeave }: EmbedModelCa
 
   const getTimeLabels = () => {
     switch (model.time_window) {
-      case '1h': return ['60分钟前', '30分钟前', '现在']
-      case '6h': return ['6小时前', '3小时前', '现在']
-      case '12h': return ['12小时前', '6小时前', '现在']
-      default: return ['24小时前', '12小时前', '现在']
+      case '1h': 
+        return isMobile ? ['60m', '30m', 'now'] : ['60分钟前', '30分钟前', '现在']
+      case '6h': 
+        return isMobile ? ['6h', '3h', 'now'] : ['6小时前', '3小时前', '现在']
+      case '12h': 
+        return isMobile ? ['12h', '6h', 'now'] : ['12小时前', '6小时前', '现在']
+      default: 
+        return isMobile ? ['24h', '12h', 'now'] : ['24小时前', '12小时前', '现在']
     }
   }
 
@@ -1392,20 +1366,19 @@ function EmbedModelCard({ model, theme, styles, onHover, onLeave }: EmbedModelCa
 
   return (
     <div className={cn(styles.card, styles.cardHover)}>
-      {/* Neon theme glow line */}
       {theme === 'neon' && (
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
       )}
 
-      {/* Header */}
+      {/* Header - 手机端改为垂直布局 */}
       <div className={cn(
-        "flex items-center justify-between",
-        isMinimal ? 'mb-2' : 'mb-4'
+        "flex flex-col sm:flex-row sm:items-center justify-between gap-2",
+        isMinimal ? 'mb-1 sm:mb-2' : 'mb-2 sm:mb-4'
       )}>
-        <div className="flex items-center gap-3 min-w-0">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           {!isMinimal && (
-            <div className="flex items-center justify-center w-7 h-7 rounded-md bg-current/5 flex-shrink-0">
-              <ModelLogo modelName={model.model_name} size={18} />
+            <div className="flex items-center justify-center w-6 sm:w-7 h-6 sm:h-7 rounded-md bg-current/5 flex-shrink-0">
+              <ModelLogo modelName={model.model_name} size={isMobile ? 14 : 18} />
             </div>
           )}
           <h3 className={styles.modelName} title={model.model_name}>
@@ -1413,7 +1386,7 @@ function EmbedModelCard({ model, theme, styles, onHover, onLeave }: EmbedModelCa
           </h3>
           {!isMinimal && (
             <span className={cn(
-              "px-2 py-0.5 text-xs rounded-full font-medium",
+              "px-1.5 sm:px-2 py-0.5 text-[9px] sm:text-xs rounded-full font-medium flex-shrink-0",
               getBadgeColor(model.current_status, styles)
             )}>
               {STATUS_LABELS[model.current_status]}
@@ -1425,10 +1398,10 @@ function EmbedModelCard({ model, theme, styles, onHover, onLeave }: EmbedModelCa
             </span>
           )}
         </div>
-        <div className={styles.statsText}>
+        <div className={cn(styles.statsText, "text-right sm:text-left")}>
           <span className={styles.statsValue}>{model.success_rate}%</span>
           {!isMinimal && ' 成功率'}
-          <span className={isMinimal ? 'mx-1' : 'mx-2 opacity-30'}>·</span>
+          <span className={cn(isMinimal ? 'mx-1' : 'mx-1 sm:mx-2 opacity-30')}>·</span>
           <span>{model.total_requests.toLocaleString()}</span>
           {!isMinimal && ' 请求'}
         </div>
@@ -1438,7 +1411,7 @@ function EmbedModelCard({ model, theme, styles, onHover, onLeave }: EmbedModelCa
       <div className="relative">
         <div className={cn(
           "flex",
-          isMinimal ? 'gap-px h-4' : 'gap-0.5 h-7'
+          isMinimal ? 'gap-px h-3 sm:h-4' : 'gap-0.5 h-5 sm:h-7'
         )}>
           {model.slot_data.map((slot, index) => (
             <div
@@ -1454,14 +1427,14 @@ function EmbedModelCard({ model, theme, styles, onHover, onLeave }: EmbedModelCa
           ))}
         </div>
 
-        {/* Time labels */}
+        {/* Time labels - 手机端显示更紧凑 */}
         <div className={cn(
-          "flex justify-between mt-2",
+          "flex justify-between mt-1 sm:mt-2",
           styles.timeLabel
         )}>
-          <span>{isMinimal ? timeLabels[0].replace('分钟前', 'm').replace('小时前', 'h') : timeLabels[0]}</span>
-          <span>{isMinimal ? timeLabels[1].replace('分钟前', 'm').replace('小时前', 'h') : timeLabels[1]}</span>
-          <span>{isMinimal ? 'now' : timeLabels[2]}</span>
+          <span>{timeLabels[0]}</span>
+          <span>{timeLabels[1]}</span>
+          <span>{timeLabels[2]}</span>
         </div>
       </div>
     </div>
@@ -1469,7 +1442,7 @@ function EmbedModelCard({ model, theme, styles, onHover, onLeave }: EmbedModelCa
 }
 
 // ============================================================================
-// Token Group Dropdown (rich popover with description + ratio badge)
+// Token Group Dropdown
 // ============================================================================
 
 interface TokenGroupDropdownProps {
@@ -1498,7 +1471,6 @@ function TokenGroupDropdown({ groups, countMap, value, onChange, styles }: Token
   const activeName = isActive ? value.slice(6) : ''
   const activeCount = isActive ? (countMap[value] || 0) : 0
 
-  // 按倍率降序排序：高倍率优先；缺失倍率的分组按名称字母排序后置底
   const sortedGroups = useMemo(() => {
     return [...groups].sort((a, b) => {
       const aHas = a.ratio !== undefined
@@ -1510,7 +1482,6 @@ function TokenGroupDropdown({ groups, countMap, value, onChange, styles }: Token
     })
   }, [groups])
 
-  // 打开时计算 trigger 位置（用于 portal 内 fixed 定位）
   useEffect(() => {
     if (!open) {
       setTriggerRect(null)
@@ -1556,10 +1527,9 @@ function TokenGroupDropdown({ groups, countMap, value, onChange, styles }: Token
     setOpen(false)
   }
 
-  // 计算 panel 在视口里的位置；若右侧空间不够则向左对齐
   const panelStyle: React.CSSProperties = useMemo(() => {
     if (!triggerRect) return { display: 'none' }
-    const PANEL_WIDTH_HINT = 320 // min-w 18rem ≈ 288，留点余量
+    const PANEL_WIDTH_HINT = 280
     const overflowRight = triggerRect.left + PANEL_WIDTH_HINT > window.innerWidth - 16
     const left = overflowRight
       ? Math.max(16, triggerRect.right - PANEL_WIDTH_HINT)
@@ -1580,19 +1550,19 @@ function TokenGroupDropdown({ groups, countMap, value, onChange, styles }: Token
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
         className={cn(
-          "inline-flex items-center gap-1.5 pl-3 pr-2 py-1.5 text-xs font-medium rounded-full border transition-all whitespace-nowrap",
+          "inline-flex items-center gap-1 sm:gap-1.5 pl-2.5 sm:pl-3 pr-1.5 sm:pr-2 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium rounded-full border transition-all whitespace-nowrap",
           "focus:outline-none focus:ring-2 focus:ring-current/20",
           isActive
             ? "bg-blue-500/20 border-blue-500/40 text-blue-400 font-semibold shadow-sm"
             : cn("border-current/20 opacity-70 hover:opacity-100", styles.statsText)
         )}
       >
-        <KeyRound size={12} className="flex-shrink-0" />
-        <span>{isActive ? activeName : '密钥分组'}</span>
-        <span className="opacity-70 tabular-nums">
+        <KeyRound size={10} className="sm:h-3 sm:w-3 flex-shrink-0" />
+        <span>{isActive ? (activeName.length > 10 ? activeName.slice(0, 8) + '..' : activeName) : '密钥分组'}</span>
+        <span className="opacity-70 tabular-nums text-[9px] sm:text-[10px]">
           {isActive ? activeCount : groups.length}
         </span>
-        <ChevronDown size={12} className={cn("flex-shrink-0 opacity-60 transition-transform", open && "rotate-180")} />
+        <ChevronDown size={10} className={cn("flex-shrink-0 opacity-60 transition-transform", open && "rotate-180")} />
       </button>
 
       {open && triggerRect && createPortal(
@@ -1601,26 +1571,24 @@ function TokenGroupDropdown({ groups, countMap, value, onChange, styles }: Token
           role="listbox"
           style={panelStyle}
           className={cn(
-            "min-w-[18rem] max-w-[28rem] max-h-[24rem] overflow-y-auto rounded-lg shadow-xl",
+            "min-w-[14rem] sm:min-w-[18rem] max-w-[20rem] sm:max-w-[28rem] max-h-[20rem] sm:max-h-[24rem] overflow-y-auto rounded-lg shadow-xl",
             styles.tooltip,
-            // 放在 styles.tooltip 后让 tailwind-merge 优先采用这里的值
             "p-1 z-[10001]"
           )}
         >
-          {/* "全部" option clears the token filter */}
           <button
             type="button"
             role="option"
             aria-selected={!isActive}
             onClick={() => handleSelect('all')}
             className={cn(
-              "w-full text-left px-3 py-2 rounded-md transition-colors flex items-center gap-2",
+              "w-full text-left px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors flex items-center gap-1.5 sm:gap-2",
               !isActive ? "bg-blue-500/10 text-blue-500" : "hover:bg-current/5"
             )}
           >
-            <Layers size={14} className="flex-shrink-0 opacity-60" />
-            <span className={cn("text-sm font-medium", styles.tooltipValue)}>全部</span>
-            <span className={cn("ml-auto text-xs tabular-nums", styles.tooltipLabel)}>
+            <Layers size={12} className="flex-shrink-0 opacity-60" />
+            <span className={cn("text-xs sm:text-sm font-medium", styles.tooltipValue)}>全部</span>
+            <span className={cn("ml-auto text-[10px] sm:text-xs tabular-nums", styles.tooltipLabel)}>
               {countMap.all ?? 0}
             </span>
           </button>
@@ -1631,6 +1599,7 @@ function TokenGroupDropdown({ groups, countMap, value, onChange, styles }: Token
             const filterId = `token:${g.group_name}`
             const selected = value === filterId
             const count = countMap[filterId] || 0
+            const displayName = g.group_name.length > 20 ? g.group_name.slice(0, 18) + '..' : g.group_name
             return (
               <button
                 type="button"
@@ -1639,31 +1608,31 @@ function TokenGroupDropdown({ groups, countMap, value, onChange, styles }: Token
                 aria-selected={selected}
                 onClick={() => handleSelect(filterId)}
                 className={cn(
-                  "w-full text-left px-3 py-2 rounded-md transition-colors flex items-start gap-3",
+                  "w-full text-left px-2 sm:px-3 py-1.5 sm:py-2 rounded-md transition-colors flex items-start gap-2 sm:gap-3",
                   selected ? "bg-blue-500/10" : "hover:bg-current/5"
                 )}
               >
                 <div className="min-w-0 flex-1">
-                  <div className={cn("text-sm font-semibold truncate", styles.tooltipValue)}>
-                    {g.group_name}
+                  <div className={cn("text-xs sm:text-sm font-semibold truncate", styles.tooltipValue)}>
+                    {displayName}
                   </div>
                   {g.description && (
-                    <div className={cn("text-xs mt-0.5 line-clamp-2 break-all", styles.tooltipLabel)}>
+                    <div className={cn("text-[9px] sm:text-xs mt-0.5 line-clamp-2 break-all", styles.tooltipLabel)}>
                       {g.description}
                     </div>
                   )}
                 </div>
-                <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                <div className="flex flex-col items-end gap-0.5 sm:gap-1 flex-shrink-0">
                   {g.ratio !== undefined && (
                     <span className={cn(
-                      "px-1.5 py-0.5 text-[10px] font-medium rounded border tabular-nums whitespace-nowrap",
+                      "px-1 sm:px-1.5 py-0.5 text-[8px] sm:text-[10px] font-medium rounded border tabular-nums whitespace-nowrap",
                       ratioStyles(g.ratio),
                     )}>
                       {g.ratio}x 倍率
                     </span>
                   )}
                   <span
-                    className={cn("text-[10px] tabular-nums opacity-70", styles.tooltipLabel)}
+                    className={cn("text-[8px] sm:text-[10px] tabular-nums opacity-70", styles.tooltipLabel)}
                     title={`筛选后可见 ${count} 个模型，分组共关联 ${g.model_count} 个`}
                   >
                     {count} 个模型
