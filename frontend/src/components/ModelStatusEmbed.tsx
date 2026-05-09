@@ -821,7 +821,7 @@ function getBadgeColor(status: 'green' | 'yellow' | 'red', styles: typeof themeS
 }
 
 // 手机端时间标签缩写辅助函数
-function getCompactTimeLabel(timeWindow: string, index: number): string {
+function _getCompactTimeLabel(timeWindow: string, index: number): string {
   const labels = {
     '1h': ['60m前', '30m前', '现在'],
     '6h': ['6h前', '3h前', '现在'],
